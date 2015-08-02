@@ -18,8 +18,10 @@ foreach(FILENAME ${chess_RESOURCES})
 endforeach(FILENAME)
 
 SET(chess_SOURCES main.cpp
-    src/MainWindow.cpp)
-SET(chess_HEADERS include/MainWindow.h)
+    src/MainWindow.cpp
+    src/Square.cpp)
+SET(chess_HEADERS include/MainWindow.h
+    include/Square.h)
 SET(chess_FORMS ui/MainWindow.ui)
 
 QT5_WRAP_CPP(chess_HEADERS_MOC ${chess_HEADERS})
