@@ -1,5 +1,7 @@
 #include <QPushButton>
 
+class Piece;
+
 class Square
 {
 public:
@@ -7,7 +9,9 @@ public:
     ~Square();
 
     QPushButton* getButton() const;
+    Piece * setPiece(Piece * piece);
 
 private:
     QPushButton *m_button;
+    Piece * m_piece;
 };

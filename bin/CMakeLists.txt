@@ -19,8 +19,11 @@ endforeach(FILENAME)
 
 SET(chess_SOURCES main.cpp
     src/MainWindow.cpp
-    src/Square.cpp)
+    src/Square.cpp
+    src/Piece.cpp)
+
 SET(chess_HEADERS include/MainWindow.h
+    include/Piece.h
     include/Square.h)
 SET(chess_FORMS ui/MainWindow.ui)
 
