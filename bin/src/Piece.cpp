@@ -1,10 +1,14 @@
 #include <Piece.h>
 #include <Square.h>
 
-Piece::Piece()
+Piece::Piece(bool isWhite)
 {
+    m_color = isWhite;
     QPixmap pixmap(55, 55);
-    pixmap.fill(QColor(rand() % 256, rand() % 256, rand() % 256));
+    if(isWhite)
+        pixmap.fill(QColor(255, 11, 11));
+    else
+        pixmap.fill(QColor(11, 255, 11));
     m_asset = new QIcon(pixmap);
 }
 
@@ -16,4 +20,9 @@ Piece::~Piece()
 const QIcon& Piece::getIcon() const
 {
     return *m_asset;
+}
+
+bool Piece::isWhite()
+{
+    return m_color;
 }

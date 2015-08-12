@@ -16,7 +16,7 @@ private:
     void initiazeSquares();
     void initiazePieces();
 
-    void addPiece(int x, int y);
+    void addPiece(int x, int y, bool isWhite);
 
     Ui::MainWindow ui;
     Square* m_board[8][8];

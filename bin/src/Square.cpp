@@ -34,23 +34,27 @@ Piece* Square::setPiece(Piece *piece)
     m_piece = piece;
     return ret;
 }
+
 void Square::actionOnClick()
 {
     if (Square::m_square == this)
         return;
-
+    
     if (Square::m_square)
     {
-        if (m_piece)
-            m_piece = NULL;
+        if (!m_piece || (m_piece &&
+            (Square::m_square->getPiece()->isWhite() != m_piece->isWhite())))
+        {
+            setPiece(Square::m_square->getPiece());
+            Square::m_square->setPiece(NULL);
+        }
 
-        setPiece(Square::m_square->getPiece());
-        Square::m_square->setPiece(NULL);
         Square::m_square = NULL;
     }
     else if (m_piece)
         Square::m_square = this;
 }
+
 Piece* Square::getPiece()
 {
     return m_piece;
