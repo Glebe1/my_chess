@@ -3,10 +3,10 @@
 
 Square* Square::m_square = NULL;
 
-Square::Square()
+Square::Square(int x, int y, Square* (&board)[8][8]):
+    m_x(x), m_y(y), m_board(board), m_piece(NULL)
 {
     m_button = new QPushButton();
-    m_piece = NULL;
     m_button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     m_button->setStyleSheet("background-color: rgba(0, 0, 0, 0)");
     connect(m_button, SIGNAL (released()), this, SLOT (actionOnClick()));
@@ -40,7 +40,10 @@ void Square::actionOnClick()
     if (Square::m_square == this)
         return;
     
-    if (Square::m_square)
+    if (Square::m_square &&
+        Square::m_square->getPiece()->moveTo(Square::m_square->getX(),
+                                             Square::m_square->getY(),
+                                             getX(), getY(), m_board))
     {
         if (!m_piece || (m_piece &&
             (Square::m_square->getPiece()->isWhite() != m_piece->isWhite())))
@@ -59,3 +62,13 @@ Piece* Square::getPiece()
 {
     return m_piece;
 }
+
+const int Square::getX() const
+{
+    return m_x;
+}
+const int Square::getY() const
+{
+    return m_y;
+}
+

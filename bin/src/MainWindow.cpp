@@ -1,6 +1,6 @@
 #include <MainWindow.h>
 #include <Square.h>
-#include <Piece.h>
+#include <Knight.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,7 +31,7 @@ void MainWindow::initiazeSquares()
     for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
         {
-             m_board[i][j] = new Square();
+             m_board[i][j] = new Square(i, j, m_board);
              ui.gridLayout->addWidget(m_board[i][j]->getButton(), i, j);
         }
     initiazePieces();
@@ -45,7 +45,7 @@ void MainWindow::addPiece(int x, int y, bool isWhite)
     if ((x < 0) || (x > 7) || (y < 0) || (y > 7))
         return;
 
-    new_piece = new Piece(isWhite);
+    new_piece = new Knight(isWhite);
     old_piece = m_board[x][y]->setPiece(new_piece);
     if (old_piece)
     {
