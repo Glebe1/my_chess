@@ -6,5 +6,7 @@
 4. create Piece class that contains QIcon and can be displayed on Square. Add few pieces on board -> DONE
 5. implement move function for piece that can move piece on any square. if moveTo square is not free then previously set piece should be killed -> DONE
 6. add handling of colour of the piece (black or white) -> DONE
-7. implement knight piece.
-
+7. implement knight piece -> DONE
+8. implement bishop piece
+9. implement players moves priority
+10. implement saving and loading of board
