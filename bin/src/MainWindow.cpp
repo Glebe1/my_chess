@@ -1,6 +1,6 @@
 #include <MainWindow.h>
+#include <Bishop.h>
 #include <Square.h>
-#include <Knight.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -45,7 +45,7 @@ void MainWindow::addPiece(int x, int y, bool isWhite)
     if ((x < 0) || (x > 7) || (y < 0) || (y > 7))
         return;
 
-    new_piece = new Knight(isWhite);
+    new_piece = new Bishop(isWhite);
     old_piece = m_board[x][y]->setPiece(new_piece);
     if (old_piece)
     {
@@ -73,8 +73,8 @@ void MainWindow::initiazePieces()
     std::cout << "add piece on (3, 1, false)" << std::endl;
     addPiece(3, 1, false);
     //2. create piece with wrong params.
-    std::cout << "add piece on (9, 5, true)" << std::endl;
-    addPiece(9, 5, true);
+    std::cout << "add piece on (6, 5, true)" << std::endl;
+    addPiece(6, 5, true);
     std::cout << "add piece on (7, 9, false)" << std::endl;
     addPiece(7, 9, false);
     //3. create piese on busy cell.

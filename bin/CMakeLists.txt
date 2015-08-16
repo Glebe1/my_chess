@@ -21,12 +21,14 @@ SET(chess_SOURCES main.cpp
     src/MainWindow.cpp
     src/Square.cpp
     src/Piece.cpp
-    src/Knight.cpp)
+    src/Knight.cpp
+    src/Bishop.cpp)
 
 SET(chess_HEADERS include/MainWindow.h
     include/Piece.h
     include/Square.h
-    include/Knight.h)
+    include/Knight.h
+    include/Bishop.h)
 SET(chess_FORMS ui/MainWindow.ui)
 
 QT5_WRAP_CPP(chess_HEADERS_MOC ${chess_HEADERS})
