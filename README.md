@@ -7,8 +7,8 @@
 5.  implement move function for piece that can move piece on any square. if moveTo square is not free then previously set piece should be killed -> DONE
 6.  add handling of colour of the piece (black or white) -> DONE
 7.  implement knight piece -> DONE
-8.  implement bishop piece ->
-9.  add include guards
+8.  implement bishop piece -> DONE
+9.  add include guards -> DONE
 10. implement board class
 11. implement players moves priority
 12. implement saving and loading of board

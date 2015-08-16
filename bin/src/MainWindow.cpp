@@ -1,6 +1,8 @@
 #include <MainWindow.h>
-#include <Bishop.h>
 #include <Square.h>
+#include <Piece.h>
+#include <Bishop.h>
+#include <Knight.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

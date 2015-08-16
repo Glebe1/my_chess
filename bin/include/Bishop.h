@@ -1,3 +1,6 @@
+#ifndef H_BISHOP
+#define H_BISHOP
+
 #include <Piece.h>
 
 class Square;
@@ -8,3 +11,5 @@ public:
     Bishop(bool isWhite);
     bool moveTo(int fromX, int fromY, int toX, int toY, Square* (&board)[8][8]);
 };
+
+#endif
