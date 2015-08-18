@@ -7,9 +7,10 @@ Board::Board(QGridLayout *gridLayout)
     for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
         {
-             m_board[i][j] = new Square(i, j, m_board);
+             m_board[i][j] = new Square(i, j, this);
              gridLayout->addWidget(m_board[i][j]->getButton(), i, j);
         }
+    m_iswhiteturn = true;
 }
 
 Board::~Board()
@@ -21,6 +22,7 @@ Board::~Board()
         it != m_pieces.end(); ++it)
         delete *it;
 }
+
 void Board::addPiece(int x, int y, bool isWhite)
 {
     Piece* new_piece = NULL;
@@ -41,4 +43,19 @@ void Board::addPiece(int x, int y, bool isWhite)
     }
 
     m_pieces.push_back(new_piece);
+}
+
+bool Board::isWhiteTurn() const
+{
+    return m_iswhiteturn;
+}
+
+void Board::changeTurn()
+{
+    m_iswhiteturn = !m_iswhiteturn;
+}
+
+Square* Board::getSquare(int x,int y) const
+{
+    return m_board[x][y];
 }

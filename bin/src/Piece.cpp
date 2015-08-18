@@ -26,3 +26,10 @@ bool Piece::isWhite()
 {
     return m_color;
 }
+
+bool Piece::isSameColor(Piece* piece) const
+{
+    if (!piece)
+        return false;
+    return (piece->isWhite() == m_color);
+}

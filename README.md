@@ -10,5 +10,5 @@
 8.  implement bishop piece -> DONE
 9.  add include guards -> DONE
 10. implement board class -> DONE
-11. implement players moves priority
+11. implement players moves priority -> DONE
 12. implement saving and loading of board

@@ -3,7 +3,7 @@
 
 #include <QIcon>
 
-class Square;
+class Board;
 
 class Piece
 {
@@ -14,8 +14,9 @@ public:
     Piece(bool isWhite);
     ~Piece();
     bool isWhite();
-    virtual bool moveTo(int fromX,int fromY,int toX,int toY,Square* (&board)[8][8]) = 0;
+    virtual bool moveTo(int fromX,int fromY,int toX,int toY, Board* board) = 0;
     const QIcon& getIcon() const;
+    bool isSameColor(Piece* piece) const;
 };
 
 #endif

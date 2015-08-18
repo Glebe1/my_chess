@@ -1,13 +1,14 @@
 #include <Bishop.h>
 #include <iostream>
 #include <Square.h>
+#include <Board.h>
 
 Bishop::Bishop(bool isWhite):
     Piece(isWhite)
 {
 }
 
-bool Bishop::moveTo(int fromX,int fromY,int toX,int toY, Square* (&board)[8][8])
+bool Bishop::moveTo(int fromX,int fromY,int toX,int toY, Board* board)
 {
     if ((fromX < 0) || (toX < 0) || (fromY < 0) || (toY < 0) ||
         (fromX >= 8) || (toX >= 8) || (fromY >= 8) || (toY >= 8))
@@ -34,7 +35,7 @@ bool Bishop::moveTo(int fromX,int fromY,int toX,int toY, Square* (&board)[8][8])
     {
         fromX = fromX + dX;
         fromY = fromY + dY;
-        if(board[fromX][fromY]->getPiece())
+        if(board->getSquare(fromX, fromY)->getPiece())
             return false;
     }
 

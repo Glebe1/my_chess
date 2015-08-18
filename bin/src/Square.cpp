@@ -1,9 +1,10 @@
 #include <Square.h>
 #include <Piece.h>
+#include <Board.h>
 
 Square* Square::m_square = NULL;
 
-Square::Square(int x, int y, Square* (&board)[8][8]):
+Square::Square(int x, int y, Board* board):
     m_x(x), m_y(y), m_board(board), m_piece(NULL)
 {
     m_button = new QPushButton();
@@ -40,21 +41,23 @@ void Square::actionOnClick()
     if (Square::m_square == this)
         return;
     
-    if (Square::m_square &&
-        Square::m_square->getPiece()->moveTo(Square::m_square->getX(),
-                                             Square::m_square->getY(),
-                                             getX(), getY(), m_board))
+    if (Square::m_square)
     {
-        if (!m_piece || (m_piece &&
-            (Square::m_square->getPiece()->isWhite() != m_piece->isWhite())))
+        if (Square::m_square->getPiece()->moveTo(Square::m_square->getX(),
+                                                 Square::m_square->getY(),
+                                                 getX(),
+                                                 getY(),
+                                                 m_board) &&
+            !Square::m_square->getPiece()->isSameColor(m_piece))
         {
             setPiece(Square::m_square->getPiece());
             Square::m_square->setPiece(NULL);
+            m_board->changeTurn();
         }
 
         Square::m_square = NULL;
     }
-    else if (m_piece)
+    else if (m_piece && m_piece->isWhite() == m_board->isWhiteTurn())
         Square::m_square = this;
 }
 
