@@ -9,7 +9,6 @@ public:
     ~MainWindow();
 
 private:
-    void initiazePieces();
     Board* m_gameboard;
     Ui::MainWindow ui;
 };

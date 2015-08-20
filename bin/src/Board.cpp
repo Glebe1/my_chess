@@ -1,6 +1,8 @@
 #include <Square.h>
 #include <Board.h>
 #include <Bishop.h>
+#include <Knight.h>
+
 
 Board::Board(QGridLayout *gridLayout)
 {
@@ -11,6 +13,7 @@ Board::Board(QGridLayout *gridLayout)
              gridLayout->addWidget(m_board[i][j]->getButton(), i, j);
         }
     m_iswhiteturn = true;
+    initiazePieces();
 }
 
 Board::~Board()
@@ -23,16 +26,16 @@ Board::~Board()
         delete *it;
 }
 
-void Board::addPiece(int x, int y, bool isWhite)
+void Board::addPiece(int x, int y, Piece* new_piece)
 {
-    Piece* new_piece = NULL;
-    Piece* old_piece = NULL;
-
     if ((x < 0) || (x > 7) || (y < 0) || (y > 7))
+    {
+        delete new_piece;
         return;
+    }
 
-    new_piece = new Bishop(isWhite);
-    old_piece = m_board[x][y]->setPiece(new_piece);
+    Piece* old_piece = m_board[x][y]->setPiece(new_piece);
+
     if (old_piece)
     {
         pieces_array_t::iterator pos = std::find(m_pieces.begin(),
@@ -43,6 +46,18 @@ void Board::addPiece(int x, int y, bool isWhite)
     }
 
     m_pieces.push_back(new_piece);
+}
+
+void Board::initiazePieces()
+{
+    addPiece(1, 2, new Bishop(true));
+    addPiece(7, 5, new Knight(false));
+    addPiece(3, 1, new Bishop(false));
+    addPiece(6, 5, new Knight(true));
+    addPiece(7, 6, new Knight(false));
+    addPiece(4, 7, new Bishop(true));
+    addPiece(2, 2, new Knight(true));
+    addPiece(4, 2, new Bishop(false));
 }
 
 bool Board::isWhiteTurn() const
