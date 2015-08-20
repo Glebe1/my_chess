@@ -1,15 +1,8 @@
 #include <Piece.h>
 #include <Square.h>
 
-Piece::Piece(bool isWhite)
+Piece::Piece()
 {
-    m_color = isWhite;
-    QPixmap pixmap(55, 55);
-    if(isWhite)
-        pixmap.fill(QColor(255, 11, 11));
-    else
-        pixmap.fill(QColor(11, 255, 11));
-    m_asset = new QIcon(pixmap);
 }
 
 Piece::~Piece()

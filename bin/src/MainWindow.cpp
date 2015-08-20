@@ -8,13 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui.setupUi(this);
 
     QString filePath = QApplication::applicationDirPath();
-    filePath.append("/res/Images/pic1.png");
     connect(ui.actionSaveGame, SIGNAL(triggered()), this, SLOT(onSaveGame()));
 
+    m_gameboard = new Board(ui.gridLayout, filePath.toUtf8().constData());
     ui.label->setScaledContents(1);
+    
+    filePath.append("/res/Images/pic1.png");
     ui.label->setPixmap(QPixmap(filePath));
 
-    m_gameboard = new Board(ui.gridLayout);
 }
 
 MainWindow::~MainWindow()

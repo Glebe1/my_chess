@@ -10,6 +10,7 @@ Square::Square(int x, int y, Board* board):
     m_button = new QPushButton();
     m_button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     m_button->setStyleSheet("background-color: rgba(0, 0, 0, 0)");
+    m_button->setIconSize(QSize(48, 48));
     connect(m_button, SIGNAL (released()), this, SLOT (actionOnClick()));
 }
 

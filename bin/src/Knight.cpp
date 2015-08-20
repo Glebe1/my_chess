@@ -2,9 +2,15 @@
 #include <iostream>
 #include <Board.h>
 
-Knight::Knight(bool isWhite):
-    Piece(isWhite)
+Knight::Knight(bool isWhite)
 {
+    m_color = isWhite;
+    QPixmap pixmap(55, 55);
+    if(isWhite)
+        pixmap.fill(QColor(255, 11, 11));
+    else
+        pixmap.fill(QColor(11, 255, 11));
+    m_asset = new QIcon(pixmap);
     m_piece_type = KNIGHT;
 }
 

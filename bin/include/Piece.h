@@ -23,7 +23,7 @@ protected:
     PieceType m_piece_type;
 
 public:
-    Piece(bool isWhite);
+    Piece();
     ~Piece();
 
     virtual bool moveTo(int fromX,int fromY,int toX,int toY, Board* board) = 0;

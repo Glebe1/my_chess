@@ -14,9 +14,10 @@ class Board
     bool m_iswhiteturn;
     pieces_array_t m_pieces;
     Square* m_board[8][8];
+    const char* m_path;
 
 public:
-    Board(QGridLayout *gridLayout);
+    Board(QGridLayout *gridLayout, const char* filepath);
     ~Board();
 
     bool isWhiteTurn() const;

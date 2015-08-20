@@ -6,7 +6,8 @@
 
 #include <fstream>
 
-Board::Board(QGridLayout *gridLayout)
+Board::Board(QGridLayout *gridLayout, const char* filepath)
+    :m_path(filepath)
 {
     for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
@@ -52,14 +53,14 @@ void Board::addPiece(int x, int y, Piece* new_piece)
 
 void Board::initiazePieces()
 {
-    addPiece(1, 2, new Bishop(true));
-    addPiece(7, 5, new Knight(false));
-    addPiece(3, 1, new Bishop(false));
+    addPiece(1, 2, new Bishop(true, m_path));
+    addPiece(3, 1, new Bishop(false, m_path));
+    addPiece(4, 2, new Bishop(false, m_path));
+    addPiece(4, 7, new Bishop(true, m_path));
     addPiece(6, 5, new Knight(true));
     addPiece(7, 6, new Knight(false));
-    addPiece(4, 7, new Bishop(true));
+    addPiece(7, 5, new Knight(false));
     addPiece(2, 2, new Knight(true));
-    addPiece(4, 2, new Bishop(false));
 }
 
 bool Board::isWhiteTurn() const

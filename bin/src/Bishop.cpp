@@ -3,10 +3,17 @@
 #include <Square.h>
 #include <Board.h>
 
-Bishop::Bishop(bool isWhite):
-    Piece(isWhite)
+Bishop::Bishop(bool isWhite, std::string filepath)
 {
+    m_color = isWhite;
     m_piece_type = BISHOP;
+
+    filepath.append("/res/Images/Bishop");
+    filepath.append((isWhite) ? "_white" : "_black");
+    filepath.append(".png");
+
+    QPixmap pixmap(filepath.c_str());
+    m_asset = new QIcon(pixmap);
 }
 
 bool Bishop::moveTo(int fromX,int fromY,int toX,int toY, Board* board)
