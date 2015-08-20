@@ -21,6 +21,8 @@ public:
 
     bool isWhiteTurn() const;
     void changeTurn();
-    Square* getSquare(int x,int y) const;
     void initiazeSquares();
+    Square* getSquare(int x,int y) const;
+
+    void saveGameBoard(const char* filepath) const;
 };

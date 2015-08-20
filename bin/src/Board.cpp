@@ -1,9 +1,10 @@
 #include <Square.h>
 #include <Board.h>
+
 #include <Bishop.h>
 #include <Knight.h>
 
-#include <iostream>
+#include <fstream>
 
 Board::Board(QGridLayout *gridLayout)
 {
@@ -24,10 +25,7 @@ Board::~Board()
              delete m_board[i][j];
     for (pieces_array_t::iterator it = m_pieces.begin();
         it != m_pieces.end(); ++it)
-    {
-        std::cout << "    deleting " << (*it)->getPieceType() << std::endl;
         delete *it;
-    }
 }
 
 void Board::addPiece(int x, int y, Piece* new_piece)
@@ -77,4 +75,24 @@ void Board::changeTurn()
 Square* Board::getSquare(int x,int y) const
 {
     return m_board[x][y];
+}
+
+void Board::saveGameBoard(const char* filepath) const
+{
+    std::ofstream outfile (filepath);
+
+    outfile.put(isWhiteTurn() + '0');
+    outfile.put('\n');
+
+    for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+             if (m_board[i][j]->getPiece())
+             {
+                 outfile.put(i + '0');
+                 outfile.put(j + '0');
+                 outfile.put(m_board[i][j]->getPiece()->getPieceType()+'0');
+                 outfile.put(m_board[i][j]->getPiece()->isWhite()+'0');
+                 outfile.put('\n');
+             }
+    outfile.flush();
 }
