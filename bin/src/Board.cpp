@@ -3,6 +3,7 @@
 #include <Bishop.h>
 #include <Knight.h>
 
+#include <iostream>
 
 Board::Board(QGridLayout *gridLayout)
 {
@@ -23,7 +24,10 @@ Board::~Board()
              delete m_board[i][j];
     for (pieces_array_t::iterator it = m_pieces.begin();
         it != m_pieces.end(); ++it)
+    {
+        std::cout << "    deleting " << (*it)->getPieceType() << std::endl;
         delete *it;
+    }
 }
 
 void Board::addPiece(int x, int y, Piece* new_piece)

@@ -5,6 +5,7 @@
 Knight::Knight(bool isWhite):
     Piece(isWhite)
 {
+    m_piece_type = KNIGHT;
 }
 
 bool Knight::moveTo(int fromX,int fromY,int toX,int toY, Board* board)

@@ -6,6 +6,7 @@
 Bishop::Bishop(bool isWhite):
     Piece(isWhite)
 {
+    m_piece_type = BISHOP;
 }
 
 bool Bishop::moveTo(int fromX,int fromY,int toX,int toY, Board* board)
