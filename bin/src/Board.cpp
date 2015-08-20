@@ -57,10 +57,10 @@ void Board::initiazePieces()
     addPiece(3, 1, new Bishop(false, m_path));
     addPiece(4, 2, new Bishop(false, m_path));
     addPiece(4, 7, new Bishop(true, m_path));
-    addPiece(6, 5, new Knight(true));
-    addPiece(7, 6, new Knight(false));
-    addPiece(7, 5, new Knight(false));
-    addPiece(2, 2, new Knight(true));
+    addPiece(6, 5, new Knight(true, m_path));
+    addPiece(7, 6, new Knight(false, m_path));
+    addPiece(7, 5, new Knight(false, m_path));
+    addPiece(2, 2, new Knight(true, m_path));
 }
 
 bool Board::isWhiteTurn() const

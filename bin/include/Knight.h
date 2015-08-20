@@ -8,7 +8,7 @@ class Board;
 class Knight: public Piece
 {
 public:
-    Knight(bool isWhite);
+    Knight(bool isWhite, std::string filepath);
     bool moveTo(int fromX, int fromY, int toX, int toY, Board* board);
 };
 

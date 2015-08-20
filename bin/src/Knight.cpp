@@ -2,16 +2,17 @@
 #include <iostream>
 #include <Board.h>
 
-Knight::Knight(bool isWhite)
+Knight::Knight(bool isWhite, std::string filepath)
 {
     m_color = isWhite;
-    QPixmap pixmap(55, 55);
-    if(isWhite)
-        pixmap.fill(QColor(255, 11, 11));
-    else
-        pixmap.fill(QColor(11, 255, 11));
-    m_asset = new QIcon(pixmap);
     m_piece_type = KNIGHT;
+
+    filepath.append("/res/Images/Knight");
+    filepath.append((isWhite) ? "_white" : "_black");
+    filepath.append(".png");
+
+    QPixmap pixmap(filepath.c_str());
+    m_asset = new QIcon(pixmap);
 }
 
 bool Knight::moveTo(int fromX,int fromY,int toX,int toY, Board* board)
