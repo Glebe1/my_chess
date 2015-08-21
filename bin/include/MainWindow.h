@@ -13,6 +13,7 @@ public:
 
 public slots:
     void onSaveGame();
+    void onLoadGame();
 
 private:
     Board* m_gameboard;

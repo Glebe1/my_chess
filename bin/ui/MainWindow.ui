@@ -93,6 +93,7 @@
      <string>file</string>
     </property>
     <addaction name="actionSaveGame"/>
+    <addaction name="actionLoadGame"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -100,6 +101,11 @@
   <action name="actionSaveGame">
    <property name="text">
     <string>save game</string>
+   </property>
+  </action>
+  <action name="actionLoadGame">
+   <property name="text">
+    <string>load game</string>
    </property>
   </action>
  </widget>

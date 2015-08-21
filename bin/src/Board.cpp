@@ -19,6 +19,20 @@ Board::Board(QGridLayout *gridLayout, const char* filepath)
     initiazePieces();
 }
 
+
+Board::Board(QGridLayout *gridLayout, const char* dirpath, const char* loadfile)
+    :m_path(dirpath)
+{
+    for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+        {
+             m_board[i][j] = new Square(i, j, this);
+             gridLayout->addWidget(m_board[i][j]->getButton(), i, j);
+        }
+    m_iswhiteturn = true;
+    loadPiecesFromFile(loadfile);
+}
+
 Board::~Board()
 {
     for (int i = 0; i < 8; i++)
@@ -36,6 +50,9 @@ void Board::addPiece(int x, int y, Piece* new_piece)
         delete new_piece;
         return;
     }
+
+    if (!new_piece)
+        return;
 
     Piece* old_piece = m_board[x][y]->setPiece(new_piece);
 
@@ -82,18 +99,50 @@ void Board::saveGameBoard(const char* filepath) const
 {
     std::ofstream outfile (filepath);
 
-    outfile.put(isWhiteTurn() + '0');
-    outfile.put('\n');
+    outfile.put(isWhiteTurn());
 
     for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
              if (m_board[i][j]->getPiece())
              {
-                 outfile.put(i + '0');
-                 outfile.put(j + '0');
-                 outfile.put(m_board[i][j]->getPiece()->getPieceType()+'0');
-                 outfile.put(m_board[i][j]->getPiece()->isWhite()+'0');
-                 outfile.put('\n');
+                 outfile.put(i);
+                 outfile.put(j);
+                 outfile.put(m_board[i][j]->getPiece()->getPieceType());
+                 outfile.put(m_board[i][j]->getPiece()->isWhite());
              }
     outfile.flush();
+}
+
+void Board::loadPiecesFromFile(const char* loadfilepath)
+{
+    std::ifstream loadfile(loadfilepath);
+    char x, y, color, type, c;
+
+    loadfile.get(c);
+    m_iswhiteturn = c;
+    bool iseof = true;
+    while (iseof)
+        {
+            loadfile.get(x);
+            loadfile.get(y);
+            loadfile.get(type);
+            iseof = loadfile.get(color);
+            if(iseof)
+                addPiece(x, y,
+                         allocatePiece(static_cast<PieceType>(type), color));
+        }
+    loadfile.close();
+}
+
+Piece* Board::allocatePiece(PieceType type, bool color)
+{
+    switch (type)
+    {
+        case BISHOP:
+            return new Bishop(color, m_path);
+        case KNIGHT:
+            return new Knight(color, m_path);
+        default:
+            return NULL;
+    }
 }
