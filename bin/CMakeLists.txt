@@ -19,7 +19,9 @@ set(images_RESOURCES pic1.png
                     Rook_white.png
                     Rook_black.png
                     Queen_white.png
-                    Queen_black.png)
+                    Queen_black.png
+                    King_white.png
+                    King_black.png)
 
 foreach(FILENAME ${images_RESOURCES})
   FILE(COPY "${IMG_RES_DIR}${FILENAME}" DESTINATION "${IMG_BIN_RES_DIR}")
@@ -42,7 +44,8 @@ SET(chess_SOURCES main.cpp
     src/Knight.cpp
     src/Bishop.cpp
     src/Rook.cpp
-    src/Queen.cpp)
+    src/Queen.cpp
+    src/King.cpp)
 
 SET(chess_HEADERS include/MainWindow.h
     include/Board.h
@@ -51,7 +54,8 @@ SET(chess_HEADERS include/MainWindow.h
     include/Knight.h
     include/Bishop.h
     include/Rook.h
-    include/Queen.h)
+    include/Queen.h
+    include/King.h)
 
 SET(chess_FORMS ui/MainWindow.ui)
 

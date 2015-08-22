@@ -15,7 +15,7 @@
 13. implement rest of the pieces (moveTo and displaying)
     13.1. Rook -> DONE
     13.2. Queen -> DONE
-    13.3. King
+    13.3. King -> DONE
     13.4. Pawn
 14. implement castling
 15. implement pawn promotion
