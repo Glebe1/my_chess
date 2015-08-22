@@ -13,7 +13,7 @@
 11. implement players moves priority -> DONE
 12. implement saving and loading of board -> DONE
 13. implement rest of the pieces (moveTo and displaying)
-    13.1. Rook
+    13.1. Rook -> DONE
     13.2. Queen
     13.3. King
     13.4. Pawn

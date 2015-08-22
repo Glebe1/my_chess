@@ -11,11 +11,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.actionLoadGame, SIGNAL(triggered()), this, SLOT(onLoadGame()));
 
     QString filePath = QApplication::applicationDirPath();
-    QString defaultBoardPath = QApplication::applicationDirPath();
-    defaultBoardPath.append("/res/Boards/Default_Board.cbb");
-    m_gameboard = new Board(ui.gridLayout,
-                            filePath.toUtf8().constData(),
-                            defaultBoardPath.toUtf8().constData());
+//    QString defaultBoardPath = QApplication::applicationDirPath();
+//    defaultBoardPath.append("/res/Boards/Default_Board.cbb");
+
+     m_gameboard = new Board(ui.gridLayout,
+                            filePath.toUtf8().constData());
+
+//    m_gameboard = new Board(ui.gridLayout,
+//                            filePath.toUtf8().constData(),
+//                            defaultBoardPath.toUtf8().constData());
 
     ui.label->setScaledContents(1);
     filePath.append("/res/Images/pic1.png");

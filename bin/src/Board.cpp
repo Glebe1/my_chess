@@ -1,6 +1,7 @@
 #include <Square.h>
 #include <Board.h>
 
+#include <Rook.h>
 #include <Bishop.h>
 #include <Knight.h>
 
@@ -70,14 +71,18 @@ void Board::addPiece(int x, int y, Piece* new_piece)
 
 void Board::initiazePieces()
 {
-    addPiece(1, 2, new Bishop(true, m_path));
-    addPiece(3, 1, new Bishop(false, m_path));
-    addPiece(4, 2, new Bishop(false, m_path));
-    addPiece(4, 7, new Bishop(true, m_path));
-    addPiece(6, 5, new Knight(true, m_path));
-    addPiece(7, 6, new Knight(false, m_path));
-    addPiece(7, 5, new Knight(false, m_path));
-    addPiece(2, 2, new Knight(true, m_path));
+    addPiece(7, 2, new Bishop(true, m_path));
+    addPiece(0, 2, new Bishop(false, m_path));
+    addPiece(0, 5, new Bishop(false, m_path));
+    addPiece(7, 5, new Bishop(true, m_path));
+    addPiece(7, 1, new Knight(true, m_path));
+    addPiece(0, 1, new Knight(false, m_path));
+    addPiece(0, 6, new Knight(false, m_path));
+    addPiece(7, 6, new Knight(true, m_path));
+    addPiece(0, 0, new Rook(false, m_path));
+    addPiece(0, 7, new Rook(false, m_path));
+    addPiece(7, 0, new Rook(true, m_path));
+    addPiece(7, 7, new Rook(true, m_path));
 }
 
 bool Board::isWhiteTurn() const
@@ -142,6 +147,8 @@ Piece* Board::allocatePiece(PieceType type, bool color)
             return new Bishop(color, m_path);
         case KNIGHT:
             return new Knight(color, m_path);
+        case ROOK:
+            return new Rook(color, m_path);
         default:
             return NULL;
     }
