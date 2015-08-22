@@ -56,10 +56,14 @@ void Square::actionOnClick()
             m_board->changeTurn();
         }
 
+        Square::m_square->setSelected(false);
         Square::m_square = NULL;
     }
     else if (m_piece && m_piece->isWhite() == m_board->isWhiteTurn())
+    {
         Square::m_square = this;
+        Square::m_square->setSelected(true);
+    }
 }
 
 Piece* Square::getPiece()
@@ -71,8 +75,17 @@ const int Square::getX() const
 {
     return m_x;
 }
+
 const int Square::getY() const
 {
     return m_y;
+}
+
+void Square::setSelected(bool isSelected)
+{
+    if (isSelected)
+        m_button->setStyleSheet("background-color: rgba(0, 250, 0, 60)");
+    else
+        m_button->setStyleSheet("background-color: rgba(0, 0, 0, 0)");
 }
 

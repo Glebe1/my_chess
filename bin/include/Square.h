@@ -15,6 +15,7 @@ public:
     Piece * getPiece();
     const int getX() const;
     const int getY() const;
+    void setSelected(bool isSelected);
 public slots:
     void actionOnClick();
 
