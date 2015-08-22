@@ -2,6 +2,7 @@
 #include <Board.h>
 
 #include <Rook.h>
+#include <Pawn.h>
 #include <Queen.h>
 #include <King.h>
 #include <Bishop.h>
@@ -89,6 +90,11 @@ void Board::initiazePieces()
     addPiece(7, 3, new Queen(true, m_path));
     addPiece(0, 4, new King(false, m_path));
     addPiece(7, 4, new King(true, m_path));
+    for(int i=0; i<8; i++)
+    {
+        addPiece(1, i, new Pawn(false, m_path));
+        addPiece(6, i, new Pawn(true, m_path));
+    }
 }
 
 bool Board::isWhiteTurn() const
@@ -159,6 +165,8 @@ Piece* Board::allocatePiece(PieceType type, bool color)
             return new Queen(color, m_path);
         case KING:
             return new King(color, m_path);
+        case PAWN:
+            return new Pawn(color, m_path);
         default:
             return NULL;
     }
