@@ -2,6 +2,7 @@
 #include <Board.h>
 
 #include <Rook.h>
+#include <Queen.h>
 #include <Bishop.h>
 #include <Knight.h>
 
@@ -83,6 +84,8 @@ void Board::initiazePieces()
     addPiece(0, 7, new Rook(false, m_path));
     addPiece(7, 0, new Rook(true, m_path));
     addPiece(7, 7, new Rook(true, m_path));
+    addPiece(0, 3, new Queen(false, m_path));
+    addPiece(7, 3, new Queen(true, m_path));
 }
 
 bool Board::isWhiteTurn() const
@@ -149,6 +152,8 @@ Piece* Board::allocatePiece(PieceType type, bool color)
             return new Knight(color, m_path);
         case ROOK:
             return new Rook(color, m_path);
+        case QUEEN:
+            return new Queen(color, m_path);
         default:
             return NULL;
     }

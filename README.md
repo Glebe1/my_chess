@@ -14,7 +14,7 @@
 12. implement saving and loading of board -> DONE
 13. implement rest of the pieces (moveTo and displaying)
     13.1. Rook -> DONE
-    13.2. Queen
+    13.2. Queen -> DONE
     13.3. King
     13.4. Pawn
 14. implement castling
