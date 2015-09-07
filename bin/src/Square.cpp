@@ -41,7 +41,7 @@ void Square::actionOnClick()
 {
     if (Square::m_square == this)
         return;
-    
+
     if (Square::m_square)
     {
         if (Square::m_square->getPiece()->moveTo(Square::m_square->getX(),
@@ -51,6 +51,7 @@ void Square::actionOnClick()
                                                  m_board) &&
             !Square::m_square->getPiece()->isSameColor(m_piece))
         {
+            Square::m_square->getPiece()->setMoved();
             setPiece(Square::m_square->getPiece());
             Square::m_square->setPiece(NULL);
             m_board->changeTurn();

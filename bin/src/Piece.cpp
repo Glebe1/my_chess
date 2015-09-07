@@ -2,6 +2,7 @@
 #include <Square.h>
 
 Piece::Piece()
+    :m_is_moved(false)
 {
 }
 
@@ -30,4 +31,14 @@ bool Piece::isSameColor(Piece* piece) const
 PieceType Piece::getPieceType() const
 {
     return m_piece_type;
+}
+
+bool Piece::setMoved()
+{
+    m_is_moved = true;
+}
+
+bool Piece::getMoved() const
+{
+    return m_is_moved;
 }
